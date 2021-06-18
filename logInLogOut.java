@@ -18,8 +18,8 @@ public class logInLogOut {
     public static WebDriver driver;
     public static String driverPath = "D:\\markiMark\\chromedriver.exe";
     public static String baseUrl = "https://atsqa.org/";
-    public static String mail = "mar@mail.com";
-    public static String pass = "marmail.com";
+    public static String mail = "marko@mail.com";
+    public static String pass = "markomail.com";
 
     @BeforeTest
     public void BeforeClass() throws InterruptedException {
@@ -84,6 +84,7 @@ public class logInLogOut {
         String expectedUrl ="https://atsqa.org/account";
         String actualUrl = driver.getCurrentUrl();
         Assert.assertEquals("Url does not match!!!", expectedUrl, actualUrl);
+        System.out.println("Prosla je provera zeljenog ekrana");
         Thread.sleep(1000);
     }
 }
