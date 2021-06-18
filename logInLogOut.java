@@ -34,6 +34,7 @@ public class logInLogOut {
         options.addArguments("--start-maximized");
         options.addArguments("--headless");
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.get(baseUrl);
         WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -42,8 +43,9 @@ public class logInLogOut {
 
     @AfterClass
     public void tearDown() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//a[contains(text(),'Sign Out')]")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Sign Out')]"))).click();
         System.out.println("Sign Out");
         Thread.sleep(1000);
         driver.quit();
@@ -84,7 +86,6 @@ public class logInLogOut {
         String expectedUrl ="https://atsqa.org/account";
         String actualUrl = driver.getCurrentUrl();
         Assert.assertEquals("Url does not match!!!", expectedUrl, actualUrl);
-        System.out.println("Prosla je provera zeljenog ekrana");
         Thread.sleep(1000);
     }
 }
